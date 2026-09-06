@@ -1,0 +1,4 @@
+{
+  "GROQ_API_KEY": "Fix the login bug in auth.py \u2014 add null check on session token.",
+  "AWS_ACCESS_KEY_ID": "AKIAIOSFODNN7EXAMPLE"
+}

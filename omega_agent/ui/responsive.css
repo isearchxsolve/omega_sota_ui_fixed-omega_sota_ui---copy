@@ -1,0 +1,561 @@
+/* OMEGA — Premium Modern UI with Glass Morphism, Animations & Gradients */
+
+:root {
+  /* Spacing & Layout */
+  --omega-gap: clamp(0.5rem, 2vw, 1.25rem);
+  --omega-radius: 16px;
+  --omega-chat-min-h: min(52vh, 520px);
+  
+  /* Color Palette - Premium Dark with Vibrant Accents */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-glass: rgba(30, 41, 59, 0.7);
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  
+  --border-color: rgba(203, 213, 225, 0.1);
+  --border-color-light: rgba(203, 213, 225, 0.2);
+  
+  /* Shadow - Elevated look */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.15);
+}
+
+/* === Base Styling === */
+html, body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#omega-app-root,
+#omega-app-root .gradio-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: clamp(0.75rem, 3vw, 1.5rem) !important;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1f35 100%);
+  min-height: 100vh;
+}
+
+/* === Hero Section === */
+.omega-hero {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+  letter-spacing: -0.5px;
+  animation: heroFade 0.8s ease-out;
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#omega-app-root > .markdown {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--omega-radius);
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.6s ease-out 0.1s both;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Layout === */
+.omega-layout-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--omega-gap) !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+}
+
+.omega-chat-column {
+  flex: 1 1 min(100%, 42rem) !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.omega-side-column {
+  flex: 1 1 20rem !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* === Chatbot Styling === */
+.omega-chat-column .chatbot,
+.omega-chat-column [data-testid="chatbot"] {
+  min-height: var(--omega-chat-min-h) !important;
+  height: var(--omega-chat-min-h) !important;
+  max-height: 70vh !important;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.6) 100%) !important;
+  border: 1px solid var(--border-color-light) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: var(--shadow-lg), var(--shadow-glow) !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.5) transparent;
+}
+
+.omega-chat-column .chatbot::-webkit-scrollbar,
+.omega-chat-column [data-testid="chatbot"]::-webkit-scrollbar {
+  width: 8px;
+}
+
+.omega-chat-column .chatbot::-webkit-scrollbar-track,
+.omega-chat-column [data-testid="chatbot"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.omega-chat-column .chatbot::-webkit-scrollbar-thumb,
+.omega-chat-column [data-testid="chatbot"]::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 4px;
+}
+
+.omega-chat-column .chatbot::-webkit-scrollbar-thumb:hover,
+.omega-chat-column [data-testid="chatbot"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.8);
+}
+
+/* Chat message styling */
+.bubble {
+  border-radius: 12px !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0.5rem 0 !important;
+  word-wrap: break-word !important;
+  line-height: 1.5 !important;
+}
+
+.bubble.user {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  margin-left: auto !important;
+  max-width: 85% !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.bubble.assistant {
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border-color-light) !important;
+  color: var(--text-primary) !important;
+  max-width: 85% !important;
+}
+
+/* === Input Row === */
+.omega-input-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.75rem !important;
+  width: 100% !important;
+  margin-top: 1rem !important;
+}
+
+.omega-input-row textarea,
+.omega-input-row input {
+  flex: 1 1 12rem !important;
+  min-width: 0 !important;
+  font-size: 16px !important;
+  background: var(--bg-glass) !important;
+  border: 1.5px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  padding: 0.75rem 1rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.omega-input-row textarea::placeholder,
+.omega-input-row input::placeholder {
+  color: var(--text-tertiary) !important;
+}
+
+.omega-input-row textarea:focus,
+.omega-input-row input:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  background: rgba(30, 41, 59, 0.9) !important;
+  box-shadow: inset 0 0 0 3px rgba(102, 126, 234, 0.1), var(--shadow-md) !important;
+}
+
+/* === Buttons === */
+.omega-input-row button,
+.omega-actions button {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 0.75rem 1.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: var(--shadow-md) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.omega-input-row button::before,
+.omega-actions button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s !important;
+}
+
+.omega-input-row button:hover::before,
+.omega-actions button:hover::before {
+  left: 100%;
+}
+
+.omega-input-row button:hover,
+.omega-actions button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(102, 126, 234, 0.4) !important;
+}
+
+.omega-input-row button:active,
+.omega-actions button:active {
+  transform: translateY(0) !important;
+}
+
+button.secondary {
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-color-light) !important;
+  color: var(--text-primary) !important;
+}
+
+button.secondary:hover {
+  background: rgba(51, 65, 85, 0.8) !important;
+  border-color: #667eea !important;
+  box-shadow: var(--shadow-md), 0 0 20px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* === Actions Row === */
+.omega-actions {
+  display: flex !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  flex-wrap: wrap !important;
+  margin-top: 0.5rem !important;
+}
+
+.omega-actions button {
+  flex: 1 1 auto !important;
+  min-height: 44px !important;
+  min-width: 100px !important;
+}
+
+/* === Side Column Sections === */
+.omega-side-column .block {
+  background: var(--bg-glass) !important;
+  border: 1px solid var(--border-color-light) !important;
+  border-radius: var(--omega-radius) !important;
+  padding: 1.25rem !important;
+  margin-bottom: 1rem !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.3s ease !important;
+}
+
+.omega-side-column .block:hover {
+  border-color: rgba(102, 126, 234, 0.3) !important;
+  box-shadow: var(--shadow-md), 0 0 15px rgba(102, 126, 234, 0.1) !important;
+}
+
+.omega-side-column label {
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem) !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: 0.5rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.omega-side-column .block input,
+.omega-side-column .block textarea {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.omega-side-column .block input:focus,
+.omega-side-column .block textarea:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  box-shadow: inset 0 0 0 2px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Section Headers (h3, h4) */
+.omega-side-column h3,
+.omega-side-column h4 {
+  color: var(--text-primary) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.omega-side-column .block:first-child h3,
+.omega-side-column .block:first-child h4 {
+  margin-top: 0 !important;
+}
+
+/* Slider styling */
+input[type="range"] {
+  accent-color: #667eea !important;
+  width: 100% !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.2) 0%, rgba(102, 126, 234, 0.1) 100%) !important;
+}
+
+/* Progress indicators - Enhanced */
+.progress, input[type="range"] {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  height: 6px !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.progress-bar {
+  background: var(--primary-gradient) !important;
+  height: 100% !important;
+  border-radius: 8px !important;
+  transition: width 0.3s ease !important;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.6) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* === Markdown Elements === */
+.omega-side-column .markdown,
+.omega-side-column .block .markdown {
+  color: var(--text-tertiary) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  margin-top: 1rem !important;
+}
+
+.omega-side-column .markdown code,
+.omega-side-column .block .markdown code {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.2rem 0.4rem !important;
+  color: #f093fb !important;
+  font-size: 0.8rem !important;
+  font-family: 'Monaco', 'Courier New', monospace !important;
+}
+
+/* === File/Download Components === */
+.file-container {
+  background: var(--bg-glass) !important;
+  border: 2px dashed var(--border-color-light) !important;
+  border-radius: var(--omega-radius) !important;
+  padding: 2rem !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.file-container:hover {
+  border-color: #667eea !important;
+  background: rgba(102, 126, 234, 0.05) !important;
+}
+
+/* === Responsive Design === */
+@media (max-width: 900px) {
+  :root {
+    --omega-radius: 12px;
+  }
+
+  .omega-layout-row {
+    flex-direction: column !important;
+  }
+
+  .omega-chat-column,
+  .omega-side-column {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .omega-chat-column .chatbot,
+  .omega-chat-column [data-testid="chatbot"] {
+    min-height: 45vh !important;
+    height: 45vh !important;
+  }
+
+  .omega-input-row {
+    flex-direction: column !important;
+  }
+
+  .omega-input-row button {
+    width: 100% !important;
+  }
+
+  .bubble.user,
+  .bubble.assistant {
+    max-width: 95% !important;
+  }
+
+  .omega-side-column .block {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --omega-radius: 10px;
+  }
+
+  .omega-hero {
+    font-size: 1.25rem;
+  }
+
+  .omega-chat-column .chatbot,
+  .omega-chat-column [data-testid="chatbot"] {
+    min-height: 40vh !important;
+    height: 40vh !important;
+  }
+
+  #omega-app-root,
+  #omega-app-root .gradio-container {
+    padding: 0.5rem !important;
+  }
+
+  .omega-input-row button {
+    min-height: 40px !important;
+  }
+
+  .bubble {
+    padding: 0.6rem 0.8rem !important;
+    margin: 0.4rem 0 !important;
+  }
+
+  .omega-side-column .block {
+    padding: 0.75rem !important;
+  }
+
+  .omega-side-column label,
+  .omega-side-column h3,
+  .omega-side-column h4 {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* === Safe area for notched phones === */
+@supports (padding: max(0px)) {
+  #omega-app-root {
+    padding-left: max(0.5rem, env(safe-area-inset-left)) !important;
+    padding-right: max(0.5rem, env(safe-area-inset-right)) !important;
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* === Dark mode enhancements === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0a0e27;
+    --bg-secondary: #141829;
+    --bg-tertiary: #1f2937;
+  }
+}
+
+/* === Accessibility - Reduce motion === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === Print styles === */
+@media print {
+  #omega-app-root {
+    background: white !important;
+  }
+  .omega-side-column {
+    display: none !important;
+  }
+}

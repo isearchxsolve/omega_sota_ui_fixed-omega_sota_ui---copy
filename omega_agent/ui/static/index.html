@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OMEGA — AI Orchestration</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/omega_web.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <h1>OMEGA</h1>
+        <p>AI-powered automation — reason, plan, execute, iterate. Live progress via native EventSource (GET SSE).</p>
+      </div>
+      <div>
+        <span id="runBadge" class="badge">Ready</span>
+        <div class="elapsed" id="elapsed">Elapsed: 0.0s</div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <section class="panel chat-panel">
+        <div class="panel-head">Conversation</div>
+        <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+        <div class="chat-input-row">
+          <textarea id="messageInput" placeholder="e.g. Build a production-ready crypto trading app with MetaMask…" rows="3"></textarea>
+          <button type="button" id="sendBtn" class="btn btn-primary">Send</button>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="panel metric">
+          <label>Status</label>
+          <div class="value" id="statusText">Ready — describe your automation goal.</div>
+        </div>
+
+        <div class="panel metric">
+          <label>Progress</label>
+          <div class="progress-pct" id="progressPct">0%</div>
+          <div class="progress-wrap">
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel metric">
+          <label>Execution log</label>
+          <pre id="execLog" class="log-box"></pre>
+        </div>
+
+        <div class="panel metric">
+          <label>Awaiting input?</label>
+          <div class="value" id="awaitingText">No</div>
+        </div>
+
+        <div class="panel metric">
+          <label>Max runtime (s)</label>
+          <input type="range" id="maxTime" min="120" max="3600" step="60" value="600" style="width:100%" />
+          <div class="value" id="maxTimeLabel">600s</div>
+        </div>
+
+        <div class="panel metric">
+          <label>Last run</label>
+          <dl class="deliverable-grid" id="deliverableGrid">
+            <dt>Domain</dt><dd id="dDomain">—</dd>
+            <dt>Quality</dt><dd id="dQuality">—</dd>
+            <dt>Latency</dt><dd id="dLatency">—</dd>
+            <dt>Build verified</dt><dd id="dBuild">—</dd>
+          </dl>
+          <a id="zipLink" class="download-link" href="#" style="display:none">Download project zip</a>
+        </div>
+
+        <button type="button" id="resetBtn" class="btn btn-ghost">New session</button>
+      </aside>
+    </div>
+  </div>
+  <script src="/static/app.js?v=3"></script>
+</body>
+</html>
